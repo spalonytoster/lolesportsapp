@@ -2,8 +2,8 @@ package com.mposluszny.lolesportsapp.core.dto;
 
 import java.io.Serializable;
 
-import com.mposluszny.jdbc.model.Player;
-import com.mposluszny.jdbc.model.Team;
+import com.mposluszny.lolesportsapp.core.model.Player;
+import com.mposluszny.lolesportsapp.core.model.Team;
 
 public class PlayerDTO implements Serializable {
 

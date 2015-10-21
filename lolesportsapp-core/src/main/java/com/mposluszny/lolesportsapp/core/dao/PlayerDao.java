@@ -2,7 +2,7 @@ package com.mposluszny.lolesportsapp.core.dao;
 
 import java.util.List;
 
-import com.mposluszny.jdbc.model.Player;
+import com.mposluszny.lolesportsapp.core.model.Player;
 
 public interface PlayerDao {
 

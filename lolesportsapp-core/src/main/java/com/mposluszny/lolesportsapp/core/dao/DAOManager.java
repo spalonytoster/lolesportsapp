@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mposluszny.jdbc.dao.impl.PlayerDaoImpl;
-import com.mposluszny.jdbc.dao.impl.TeamDaoImpl;
+import com.mposluszny.lolesportsapp.core.dao.impl.PlayerDaoImpl;
+import com.mposluszny.lolesportsapp.core.dao.impl.TeamDaoImpl;
 
 public class DAOManager {
 

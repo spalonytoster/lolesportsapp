@@ -1,4 +1,4 @@
-package com.mposluszny.jdbc.dao;
+package com.mposluszny.lolesportsapp.core.dao;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,11 +6,12 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.mposluszny.jdbc.dao.DAOManager.Table;
-import com.mposluszny.jdbc.dao.impl.PlayerDaoImpl;
-import com.mposluszny.jdbc.dao.impl.TeamDaoImpl;
-import com.mposluszny.jdbc.model.Player;
-import com.mposluszny.jdbc.model.Team;
+import com.mposluszny.lolesportsapp.core.dao.DAOManager;
+import com.mposluszny.lolesportsapp.core.dao.DAOManager.Table;
+import com.mposluszny.lolesportsapp.core.dao.impl.PlayerDaoImpl;
+import com.mposluszny.lolesportsapp.core.dao.impl.TeamDaoImpl;
+import com.mposluszny.lolesportsapp.core.model.Player;
+import com.mposluszny.lolesportsapp.core.model.Team;
 
 public class PlayerDaoTest {
 
