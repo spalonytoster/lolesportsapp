@@ -8,20 +8,16 @@ import java.sql.Statement;
 
 public abstract class GenericDAO<T> {
 
-	protected final String tableName;
 	protected Connection connection;
 	protected Statement statement;
 	protected PreparedStatement preparedStatement;
-	protected ResultSet rs;
-	protected String query;
+	protected final String tableName;
 	
-	protected GenericDAO(Connection connection, Statement statement, PreparedStatement preparedStatement, ResultSet rs, String query, String tableName) {
+	protected GenericDAO(Connection connection, Statement statement, PreparedStatement preparedStatement, String tableName) {
 		
 		this.connection = connection;
 		this.statement = statement;
 		this.preparedStatement = preparedStatement;
-		this.rs = rs;
-		this.query = query;
 		this.tableName = tableName;
 	}
 	
@@ -29,9 +25,9 @@ public abstract class GenericDAO<T> {
 		
 		try {
 			
-			query = "SELECT COUNT(*) FROM " + tableName + ";";
+			String query = "SELECT COUNT(*) FROM " + tableName + ";";
 			statement = connection.createStatement();
-			rs = statement.executeQuery(query);
+			ResultSet rs = statement.executeQuery(query);
 			rs.next();
 	
 			return rs.getInt("C1");

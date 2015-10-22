@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.mposluszny.lolesportsapp.core.dao.DAOManager;
 import com.mposluszny.lolesportsapp.core.dao.DAOManager.Table;
 import com.mposluszny.lolesportsapp.core.dao.impl.PlayerDaoImpl;
 import com.mposluszny.lolesportsapp.core.dao.impl.TeamDaoImpl;

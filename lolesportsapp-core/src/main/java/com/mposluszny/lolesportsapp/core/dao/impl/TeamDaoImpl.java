@@ -14,9 +14,10 @@ import com.mposluszny.lolesportsapp.core.model.Team;
 
 public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 	
-	public TeamDaoImpl (Connection connection, Statement statement, PreparedStatement preparedStatement, ResultSet rs, String query) {
+	public TeamDaoImpl (Connection connection, Statement statement, PreparedStatement preparedStatement) {
 		
-		super(connection, statement, preparedStatement, rs, query, "Team");
+		super(connection, statement, preparedStatement,"Team");
+		ResultSet rs;
 		
 		try {
 			
@@ -54,7 +55,7 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 			try {
 			
 			statement = connection.createStatement();
-			rs = statement.executeQuery("SELECT * FROM Team;");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Team;");
 			List<Team> Teams = new ArrayList<Team>();
 			
 			while (rs.next()) {
@@ -82,7 +83,7 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 		try {
 			
 			statement = connection.createStatement();
-			rs = statement.executeQuery("SELECT * FROM Team WHERE idTeam=" + idTeam + ";");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Team WHERE idTeam=" + idTeam + ";");
 		
 			if (rs.next()) {
 				
@@ -108,7 +109,7 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 		try {
 			
 			statement = connection.createStatement();
-			rs = statement.executeQuery("SELECT * FROM Team WHERE name=\'" + name + "\';");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Team WHERE name=\'" + name + "\';");
 		
 			if (rs.next()) {
 				
@@ -152,9 +153,9 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 				
 		try {
 			
-			statement = connection.createStatement();
-			statement.executeUpdate(String.format("INSERT INTO Team (NAME, REGION, DATEOFESTABLISHMENT)"
+			preparedStatement = connection.prepareStatement(String.format("INSERT INTO Team (NAME, REGION, DATEOFESTABLISHMENT)"
 					+ " VALUES (\'%s\', \'%s\', \'%s\');", team.getName(), team.getRegion(), team.getDateOfEstablishment())); 
+			preparedStatement.execute();
 			
 		} catch (SQLException e) {
 

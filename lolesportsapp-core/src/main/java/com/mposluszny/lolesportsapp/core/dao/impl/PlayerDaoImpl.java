@@ -16,9 +16,11 @@ import com.mposluszny.lolesportsapp.core.model.Player;
 
 public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 	
-	public PlayerDaoImpl (Connection connection, Statement statement, PreparedStatement preparedStatement, ResultSet rs, String query) {
+	public PlayerDaoImpl (Connection connection, Statement statement, PreparedStatement preparedStatement) {
 				
-		super(connection, statement, preparedStatement, rs, query, "Player");
+		super(connection, statement, preparedStatement, "Player");
+		
+		ResultSet rs;
 		
 		try {
 			
@@ -59,7 +61,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 		try {
 			
 			statement = connection.createStatement();
-			rs = statement.executeQuery("SELECT * FROM Player;");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Player;");
 			List<Player> players = new ArrayList<Player>();
 			
 			while (rs.next()) {
@@ -90,7 +92,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 		try {
 			
 			statement = connection.createStatement();
-			rs = statement.executeQuery("SELECT * FROM Player WHERE idPlayer=" + idPlayer + ";");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Player WHERE idPlayer=" + idPlayer + ";");
 		
 			if (rs.next()) {
 				
@@ -137,6 +139,8 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 
 	@Override
 	public void addPlayer(Player player) {
+		
+		String query;
 		
 		try {
 			

@@ -114,6 +114,7 @@ public class DAOManager {
 
     }
 	
+	
 	public GenericDAO<?> getDao(Table table) throws SQLException {
 		
 		try {
@@ -130,10 +131,10 @@ public class DAOManager {
 		switch (table) {
 		
 		case PLAYER:
-			return new PlayerDaoImpl(this.connection, this.statement, this.preparedStatement, this.rs, this.query);
+			return new PlayerDaoImpl(this.connection, this.statement, this.preparedStatement);
 			
 		case TEAM:
-			return new TeamDaoImpl(this.connection, this.statement, this.preparedStatement, this.rs, this.query);
+			return new TeamDaoImpl(this.connection, this.statement, this.preparedStatement);
 			
 		default:
 			throw new SQLException("There's no such table in db as " + table + ".");
