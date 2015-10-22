@@ -3,7 +3,6 @@ package com.mposluszny.lolesportsapp.core.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,10 +16,7 @@ public class DAOManager {
 	private final String PASSWORD = "admin";
 	private Connection connection;
 	private Statement statement;
-	private PreparedStatement preparedStatement;
-	private ResultSet rs;
-	private String query;
-	
+	private PreparedStatement preparedStatement;	
 	
 	private DAOManager() {
 		
@@ -61,11 +57,6 @@ public class DAOManager {
 			if (this.preparedStatement != null && !this.preparedStatement.isClosed()) {
 				
 				this.preparedStatement.close();
-			}
-			
-			if (this.rs != null && this.rs.isClosed()) {
-				
-				this.rs.close();
 			}
 			
 			if (this.connection != null && !this.connection.isClosed()) {
@@ -114,6 +105,39 @@ public class DAOManager {
 
     }
 	
+	public PlayerDaoImpl getPlayerDao() {
+		
+		try {
+			
+			if (this.connection == null || this.connection.isClosed()) {
+				this.open();
+			}
+		}
+		
+		catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return new PlayerDaoImpl(this.connection, this.statement, this.preparedStatement);
+	}
+	
+	public TeamDaoImpl getTeamDao() {
+		
+		try {
+			
+			if (this.connection == null || this.connection.isClosed()) {
+				this.open();
+			}
+		}
+		
+		catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return new TeamDaoImpl(this.connection, this.statement, this.preparedStatement);
+	}
 	
 	public GenericDAO<?> getDao(Table table) throws SQLException {
 		

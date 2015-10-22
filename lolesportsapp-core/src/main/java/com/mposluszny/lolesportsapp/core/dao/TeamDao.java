@@ -12,4 +12,5 @@ public interface TeamDao {
 	public void updateTeam(Team Team);
 	public void addTeam(Team team);
 	public void deleteTeam(Team team);
+	public int count();
 }

@@ -21,7 +21,7 @@ public abstract class GenericDAO<T> {
 		this.tableName = tableName;
 	}
 	
-	public int count() throws SQLException {
+	public int count() {
 		
 		try {
 			
@@ -38,7 +38,8 @@ public abstract class GenericDAO<T> {
 			e.printStackTrace();
 		}
 		
-		throw new SQLException("Something went wrong while trying to count rows in " + tableName + " table;");
+		return -1;
+		
 	}
 	
 }
