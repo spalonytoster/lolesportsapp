@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hsqldb.lib.StringUtil;
+
 import com.mposluszny.lolesportsapp.core.dao.GenericDAO;
 import com.mposluszny.lolesportsapp.core.dao.TeamDao;
 import com.mposluszny.lolesportsapp.core.model.Team;
@@ -165,17 +167,40 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 	}
 
 	@Override
-	public void deleteTeam(Team team) {
+	public boolean deleteTeam(Team team) {
 				
 		try {
 			
-			preparedStatement = connection.prepareStatement(String.format("DELETE FROM Team WHERE idTeam=%d", team.getIdTeam()));
+			PreparedStatement updatePlayerStmt;
+			
+			if (!StringUtil.isEmpty(team.getName())) {
+				
+				Team fetchedTeam = getTeamByName(team.getName());
+				updatePlayerStmt = connection.prepareStatement("UPDATE Player SET idTeam=null WHERE idTeam=" + fetchedTeam.getIdTeam() + ";");
+				preparedStatement = connection.prepareStatement("DELETE FROM Team WHERE name=\'" + team.getName() + "\';");
+			}
+			
+			else if (team.getIdTeam() != 0L) {
+				
+				updatePlayerStmt = connection.prepareStatement("UPDATE Player SET idTeam=null WHERE idTeam=" + team.getIdTeam() + ";");
+				preparedStatement = connection.prepareStatement("DELETE FROM Team WHERE name=\'" + team.getIdTeam() + "\';");
+			}
+			
+			else {
+				
+				throw new SQLException("Blad w wywolywaniu metody deleteTeam");
+			}
+			
+			updatePlayerStmt.execute();
 			preparedStatement.execute();
+			return true;
 			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
+		
+		return false;
 		
 	}
 

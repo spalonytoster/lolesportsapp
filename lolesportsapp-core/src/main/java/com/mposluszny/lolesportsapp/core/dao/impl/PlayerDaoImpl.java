@@ -29,8 +29,8 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 			boolean tableExists = false;
 			
 			while (rs.next()) {
-				
-				if (tableName.equalsIgnoreCase(rs.getString("TABLE_NAME"))) {
+				String name = rs.getString("TABLE_NAME");
+				if (tableName.equalsIgnoreCase(name)) {
 					tableExists = true;
 					break;
 				}
@@ -125,7 +125,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 															  "surname=\'" + player.getSurname() + "\'" +
 															  "ign=\'" + player.getIgn() + "\'" +
 															  "role=\'" + player.getRole() + "\'" +
-															  "idTeam\'" + player.getIdTeam() + "\'" +
+															  "idTeam\'" + player.getTeam().getIdTeam() + "\'" +
 															  "isRetired=\'" + player.isRetired() + "\'" +
 															  "WHERE idPlayer=" + player.getIdPlayer() + ";");
 			preparedStatement.execute();
@@ -144,9 +144,9 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 		
 		try {
 			
-			String getIdTeamQuery = "SELECT idTeam FROM Team WHERE name=\'" + player.getTeamName() + "\'";
+			String getIdTeamQuery = "SELECT idTeam FROM Team WHERE name=\'" + player.getTeam().getName() + "\'";
 			
-			if (!StringUtil.isEmpty(player.getTeamName())) {
+			if (!StringUtil.isEmpty(player.getTeam().getName())) {
 				
 				query = String.format("INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED)"
 						+ " VALUES (\'%s\', \'%s\', \'%s\', \'%s\', (%s), %b);", player.getName(), player.getSurname(),
@@ -157,7 +157,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 				
 				query = String.format("INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED)"
 						+ " VALUES (\'%s\', \'%s\', \'%s\', \'%s\', %s, %b);", player.getName(), player.getSurname(),
-						player.getIgn(), player.getRole(), (player.getIdTeam() == 0L ? "null" : String.valueOf(player.getIdTeam())), player.isRetired());
+						player.getIgn(), player.getRole(), (player.getTeam().getIdTeam() == 0L ? "null" : String.valueOf(player.getTeam().getIdTeam())), player.isRetired());
 			}
 			
 			preparedStatement = 
@@ -173,17 +173,39 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 	
 
 	@Override
-	public void deletePlayer(Player player) {
+	public boolean deletePlayer(Player player) {
 		
 		try {
+						
+			if (!StringUtil.isEmpty(player.getIgn())) {
+				
+				preparedStatement = connection.prepareStatement("DELETE FROM Player WHERE ign=\'" + player.getIgn() + "\';");
+			}
 			
-			preparedStatement = connection.prepareStatement(String.format("DELETE FROM Player WHERE idPlayer=%d", player.getIdPlayer()));
+			else if (!StringUtil.isEmpty(player.getName()) && !StringUtil.isEmpty(player.getSurname())) {
+				
+				preparedStatement = connection.prepareStatement("DELETE FROM Player WHERE name=\'" + player.getName() + "\' AND surname=\'" + player.getSurname() + "\';");
+			}
+			
+			else if (player.getIdPlayer() != 0L) {
+				
+				preparedStatement = connection.prepareStatement("DELETE FROM Player WHERE idPlayer=" + player.getIdPlayer() + ";");
+			}
+			
+			else {
+				
+				throw new SQLException("Blad w wywolywaniu metody deletePlayer");
+			}
+			
 			preparedStatement.execute();
+			return true;
 			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
+		
+		return false;
 		
 	}
 

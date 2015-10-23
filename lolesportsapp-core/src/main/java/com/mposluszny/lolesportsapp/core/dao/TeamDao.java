@@ -11,6 +11,6 @@ public interface TeamDao {
 	public Team getTeamByName (String name);
 	public void updateTeam(Team Team);
 	public void addTeam(Team team);
-	public void deleteTeam(Team team);
+	public boolean deleteTeam(Team team);
 	public int count();
 }

@@ -10,6 +10,6 @@ public interface PlayerDao {
 	public Player getPlayerById (long idPlayer);
 	public void updatePlayer(Player player);
 	public void addPlayer(Player player);
-	public void deletePlayer(Player player);
+	public boolean deletePlayer(Player player);
 	public int count();
 }

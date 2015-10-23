@@ -7,6 +7,11 @@ public class Team {
 	private String region;
 	private String dateOfEstablishment;
 	
+	public Team () {
+		
+		
+	}
+	
 	public Team (String name, String region, String dateOfEstablishment) {
 		
 		this.name = name;
