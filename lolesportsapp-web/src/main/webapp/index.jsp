@@ -1,16 +1,45 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<%@page contentType="text/html"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Basic Page Needs -->
+	<meta charset="utf-8">
+	<title>LoL eSports App</title>
+	<meta name="description" content="">
+	<meta name="author" content="Maciej Posłuszny">
+	
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- FONT -->
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/normalize.css">
+	<link rel="stylesheet" href="assets/css/skeleton.css">
+	<link rel="stylesheet" href="assets/css/navbar.css">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>LoL eSports App</title>
-    </head>
-    <body>
-        <h2>Simple demo application with Java EE 6 Servlet (3.0) and JSP</h2>
-        <p><a href="hello">See greetings from servlet</a></p>
-        <p><a href="form">Fill a form</a></p>
-        <p><a href="getPersonData.jsp">Fill a Person form</a></p>
-    </body>
+</head>
+<body>
+
+	<!-- Navigation bar -->
+	<jsp:include page="/WEB-INF/jsp/includes/navbar.jspf" />
+	
+	<!-- Primary Page Layout -->
+	<div class="container">
+		<div class="row">
+			<div class="one-half column" style="margin-top: 25%">
+				<h4>LoL eSports App</h4>
+				<p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Footer -->
+	<jsp:include page="/WEB-INF/jsp/includes/footer.jspf" />
+</body>
 </html>
