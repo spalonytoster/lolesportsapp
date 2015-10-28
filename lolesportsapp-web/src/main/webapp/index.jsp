@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="assets/css/skeleton.css">
 	<link rel="stylesheet" href="assets/css/navbar.css">
 	
-	<!-- Favicon -->
+	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 
 </head>

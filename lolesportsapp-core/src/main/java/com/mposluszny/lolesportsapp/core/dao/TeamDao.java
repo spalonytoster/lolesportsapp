@@ -2,6 +2,7 @@ package com.mposluszny.lolesportsapp.core.dao;
 
 import java.util.List;
 
+import com.mposluszny.lolesportsapp.core.model.Player;
 import com.mposluszny.lolesportsapp.core.model.Team;
 
 public interface TeamDao {
@@ -13,4 +14,5 @@ public interface TeamDao {
 	public void addTeam(Team team);
 	public boolean deleteTeam(Team team);
 	public int count();
+	public List<Player> getPlayersForTeam(Team team);
 }

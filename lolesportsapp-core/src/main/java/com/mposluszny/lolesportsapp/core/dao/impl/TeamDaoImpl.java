@@ -12,6 +12,7 @@ import org.hsqldb.lib.StringUtil;
 
 import com.mposluszny.lolesportsapp.core.dao.GenericDAO;
 import com.mposluszny.lolesportsapp.core.dao.TeamDao;
+import com.mposluszny.lolesportsapp.core.model.Player;
 import com.mposluszny.lolesportsapp.core.model.Team;
 
 public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
@@ -202,6 +203,37 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 		
 		return false;
 		
+	}
+	
+	@Override
+	public List<Player> getPlayersForTeam(Team team) {
+		
+		try {
+			
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM Player WHERE idTeam=" + team.getIdTeam() + ";");
+			List<Player> players = new ArrayList<Player>();
+			
+			while (rs.next()) {
+				
+				Player player = new Player(rs.getString("name"),
+										   rs.getString("surname"),
+										   rs.getString("ign"),
+										   rs.getString("role"),
+										   rs.getLong("idTeam"),
+										   rs.getBoolean("isRetired"));
+				player.setIdPlayer(rs.getLong("idPlayer"));
+				players.add(player);
+			}
+			
+			return players;
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }

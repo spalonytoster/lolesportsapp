@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.hsqldb.lib.StringUtil;
 
@@ -125,7 +124,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 			ResultSet rs = statement.executeQuery("SELECT * FROM Player WHERE ign=\'" + ign + "\';");
 
 			if (rs.next()) {
-				
+				//Long idTeam = rs.getLong("idTeam");
 				Player player = new Player(rs.getString("name"),
 										   rs.getString("surname"),
 										   rs.getString("ign"),
