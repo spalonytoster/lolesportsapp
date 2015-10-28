@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.hsqldb.lib.StringUtil;
 
@@ -116,18 +117,47 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 	}
 
 	@Override
+	public Player getPlayerByIgn(String ign) {
+
+		try {
+			
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM Player WHERE ign=\'" + ign + "\';");
+
+			if (rs.next()) {
+				
+				Player player = new Player(rs.getString("name"),
+										   rs.getString("surname"),
+										   rs.getString("ign"),
+										   rs.getString("role"),
+										   rs.getLong("idTeam"),
+										   rs.getBoolean("isRetired"));
+				player.setIdPlayer(rs.getLong("idPlayer"));
+				
+				return player;
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	@Override
 	public void updatePlayer(Player player) {
 		
 		try {
 			
 			preparedStatement = connection.prepareStatement(
 											"UPDATE Player SET name=\'" + player.getName() + "\'" +
-															  "surname=\'" + player.getSurname() + "\'" +
-															  "ign=\'" + player.getIgn() + "\'" +
-															  "role=\'" + player.getRole() + "\'" +
-															  "idTeam\'" + player.getTeam().getIdTeam() + "\'" +
-															  "isRetired=\'" + player.isRetired() + "\'" +
-															  "WHERE idPlayer=" + player.getIdPlayer() + ";");
+															  ", surname=\'" + player.getSurname() + "\'" +
+															  ", ign=\'" + player.getIgn() + "\'" +
+															  ", role=\'" + player.getRole() + "\'" +
+															  ", idTeam=" + player.getTeam().getIdTeam() +
+															  ", isRetired=" + player.isRetired() +
+															  " WHERE idPlayer=" + player.getIdPlayer() + ";");
 			preparedStatement.execute();
 			
 		} catch (SQLException e) {

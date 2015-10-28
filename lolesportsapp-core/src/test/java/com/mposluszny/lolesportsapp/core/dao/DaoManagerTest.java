@@ -1,6 +1,6 @@
 package com.mposluszny.lolesportsapp.core.dao;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -77,6 +77,31 @@ public class DaoManagerTest {
 		
 		assertTrue(playerCountBefore == playerCountAfter+2);
 		assertTrue(teamCountBefore == teamCountAfter+1);
+		
+		daoManager.close();
+	}
+	
+	@Test
+	public void TestUpdate() {
+		
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		PlayerDao playerDao = daoManager.getPlayerDao();
+		TeamDao teamDao = daoManager.getTeamDao();
+		
+		Team team = teamDao.getTeamByName("Roccat");
+		String newName = "Kiedys Mialem Team";
+		team.setName(newName);
+		teamDao.updateTeam(team);
+		Team team2 = teamDao.getTeamByName(newName);
+		assertEquals(team.getIdTeam(), team2.getIdTeam());
+		
+		Player player = playerDao.getPlayerByIgn("Dyrus");
+		assertFalse(player.isRetired());
+		player.setRetired(true);
+		playerDao.updatePlayer(player);
+		Player player2 = playerDao.getPlayerByIgn("Dyrus");
+		assertTrue(player2.isRetired());
 		
 		daoManager.close();
 	}

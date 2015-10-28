@@ -138,8 +138,8 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 			
 			preparedStatement = connection.prepareStatement(
 											"UPDATE Team SET name=\'" + team.getName() + "\'" +
-															  "region=\'" + team.getRegion() + "\'" +
-															  "dateOfEstablishment=\'" + team.getDateOfEstablishment() + "\'" +
+															  ",region=\'" + team.getRegion() + "\'" +
+															  ",dateOfEstablishment=\'" + team.getDateOfEstablishment() + "\'" +
 															  "WHERE idTeam=" + team.getIdTeam() + ";");
 			preparedStatement.execute();
 			

@@ -15,7 +15,7 @@ INSERT INTO Team (NAME, REGION, DATEOFESTABLISHMENT) VALUES ('Roccat', 'PL', '20
 INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Jason'   , 'Tran'    , 'Wildturtle', 'AD'     , 1, false);
 INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Søren'   , 'Bjerg'   , 'Bjergsen'  , 'Mid'    , 1, false);
 INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Lucas'   , 'Larsen'  , 'Santorin'  , 'Jungle' , 1, true);
-INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Marcus'  , 'Hill'    , 'Dyrus'     , 'Top'    , 1, true);
+INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Marcus'  , 'Hill'    , 'Dyrus'     , 'Top'    , 1, false);
 INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Jang-sik', 'Jang-sik', 'Lustboy'   , 'Support', 1, true);
 
 INSERT INTO Player (NAME, SURNAME, IGN, ROLE, IDTEAM, ISRETIRED) VALUES ('Heo'   , 'Seung-hoon' , 'Huni'      , 'Top'    , 2, false);
