@@ -2,32 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Basic Page Needs -->
-	<meta charset="utf-8">
-	<title>LoL eSports App</title>
-	<meta name="description" content="">
-	<meta name="author" content="Maciej Posłuszny">
-	
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- FONT -->
-	<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
-	
-	<!-- CSS -->
-	<link rel="stylesheet" href="assets/css/normalize.css">
-	<link rel="stylesheet" href="assets/css/skeleton.css">
-	<link rel="stylesheet" href="assets/css/navbar.css">
-	
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="assets/images/favicon.png">
-
+	<!--  Meta and CSS -->
+	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/head.jspf" />
 </head>
 <body>
 
 	<!-- Navigation bar -->
-	<jsp:include page="/WEB-INF/jsp/includes/navbar.jspf" />
+	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf" />
 	
 	<!-- Primary Page Layout -->
 	<div class="container">
@@ -39,7 +20,7 @@
 		</div>
 	</div>
 	
-	<!-- Footer -->
+	<!-- Footer -->
 	<jsp:include page="/WEB-INF/jsp/includes/footer.jspf" />
 </body>
 </html>
