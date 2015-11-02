@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>lolesportsapp-web</artifactId>
   <packaging>war</packaging>
-  <name>LoL eSports App</name>
-  <url>>https://repo.maven.apache.org/maven2</url>
+  <name>lolesportsapp-web</name>
+  <url>http://maven.apache.org</url>
   
   <parent>
 	  <groupId>com.mposluszny.lolesportsapp</groupId>
@@ -14,10 +14,11 @@
   
   <dependencies>
 	<dependency>
-		<groupId>com.mposluszny.jdbc</groupId>
+		<groupId>com.mposluszny.lolesportsapp.core</groupId>
 		<artifactId>lolesportsapp-core</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		</dependency>
+		<scope>compile</scope>
+	</dependency>
 	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
@@ -38,6 +39,11 @@
 	  <groupId>javax.servlet</groupId>
 	  <artifactId>javax.servlet-api</artifactId>
 	  <version>3.1.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>jstl</artifactId>
+	  <version>1.2</version>
 	</dependency>
   </dependencies>
   
@@ -62,19 +68,23 @@
 	    </configuration>
 	  </plugin>
 	  <!-- Embedded Jetty (jetty:run) -->
-		<plugin>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty-maven-plugin</artifactId>
-			<version>9.3.1-SNAPSHOT</version>
-			<configuration>
-				<scanIntervalSeconds>3</scanIntervalSeconds>
-				<webAppConfig>
-					<contextPath>/${project.build.finalName}</contextPath>
-				</webAppConfig>
-			</configuration>
-		</plugin>
+	  <plugin>
+		<groupId>org.mortbay.jetty</groupId>
+		<artifactId>jetty-maven-plugin</artifactId>
+		<version>8.1.14.v20131031</version>
+		<configuration>
+			<scanIntervalSeconds>3</scanIntervalSeconds>
+			<webAppConfig>
+				<contextPath>/${project.build.finalName}</contextPath>
+			</webAppConfig>
+		</configuration>
+	  </plugin>
     </plugins>
   </build>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   
   <repositories>
     <repository>

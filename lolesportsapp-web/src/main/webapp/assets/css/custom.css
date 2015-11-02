@@ -1,14 +1,18 @@
-.title {
-	
-	margin-top: 30px;
-}
-
 .center {
-	
 	margin: 0 auto;
 }
 
-.table td, th{
-	
-	width: 5%
+.footer {
+	border-top: 1px solid #eee;
+	//background-color: #E4E4E4;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+
+.text-center th, td {
+	text-align: center;
+}
+
+.title {
+	margin-top: 30px;
 }

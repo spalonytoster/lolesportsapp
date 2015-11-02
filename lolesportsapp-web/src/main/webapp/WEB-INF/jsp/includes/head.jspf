@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="${request.contextPath}/assets/css/skeleton.css">
 	<link rel="stylesheet" href="${request.contextPath}/assets/css/navbar.css">
 	<link rel="stylesheet" href="${request.contextPath}/assets/css/custom.css">
+	<link rel="stylesheet" href="${request.contextPath}/assets/css/font-awesome.css">
 	
 	<!-- Favicon€ -->
 	<link rel="icon" type="image/png" href="${request.contextPath}/assets/images/favicon.png">

@@ -11,13 +11,13 @@
 
 	<!-- Navigation bar -->
 	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf" />
-	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.players.ModelBean" scope="request" />
+	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.teams.ModelBean" scope="request" />
 	
 	<!-- Primary Page Layout -->
 	<div class="container title">
 		<div class="row">
 			<div class="one column">
-				<h2>Players</h2>
+				<h2>Teams</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -26,30 +26,21 @@
 					<tbody>
 						<tr>
 							<th>Lp.</th>
-							<th>Imie</th>
-							<th>IGN</th>
-							<th>Nazwisko</th>
-							<th>Pozycja</th>
-							<th>Team</th>
-							<th>Retired</th>
+							<th>Nazwa</th>
+							<th>Region</th>
+							<th>Data utworzenia</th>
 						</tr>
 						
-						<c:forEach var="player" items="${modelBean.players}">
+						<c:forEach var="team" items="${modelBean.teams}">
 							<tr>
-								<td>${player.idPlayer}</td>
-								<td>${player.name}</td>
-								<td>${player.ign}</td>
-								<td>${player.surname}</td>
-								<td>${player.role}</td>
-								<td>${player.team.name}</td>
-								<td style="text-align: center;">
-									<c:if test="${player.retired}">
-										<i class="fa fa-check"></i>
-									</c:if>
-									<c:if test="${!player.retired}">
-										<i class="fa fa-close"></i>
-									</c:if>
+								<td>${team.idTeam}</td>
+								<td>
+									<form action="/team" method="get">
+										<command label="${team.name}" type="command"></command>
+									</form>
 								</td>
+								<td>${team.region}</td>
+								<td>${team.dateOfEstablishment}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

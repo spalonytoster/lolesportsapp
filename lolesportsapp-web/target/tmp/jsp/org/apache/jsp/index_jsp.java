@@ -9,11 +9,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
-  private static java.util.Vector _jspx_dependants;
+  private static java.util.List<String> _jspx_dependants;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
-  public Object getDependants() {
+  public java.util.List<String> getDependants() {
     return _jspx_dependants;
   }
 
@@ -41,9 +41,36 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("<html>\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html lang=\"en\">\r\n");
+      out.write("<head>\r\n");
+      out.write("\t<!--  Meta and CSS -->\r\n");
+      out.write("\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${request.contextPath}/WEB-INF/jsp/includes/head.jspf", java.lang.String.class, (PageContext)_jspx_page_context, null), out, false);
+      out.write("\r\n");
+      out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("<h2>Hello World!</h2>\r\n");
+      out.write("\r\n");
+      out.write("\t<!-- Navigation bar -->\r\n");
+      out.write("\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf", java.lang.String.class, (PageContext)_jspx_page_context, null), out, false);
+      out.write("\r\n");
+      out.write("\t\r\n");
+      out.write("\t<!-- Primary Page Layout -->\r\n");
+      out.write("\t<div class=\"container\">\r\n");
+      out.write("\t\t<div class=\"row\">\r\n");
+      out.write("\t\t\t<div class=\"one-half column\" style=\"margin-top: 25%\">\r\n");
+      out.write("\t\t\t\t<h4>LoL eSports App</h4>\r\n");
+      out.write("\t\t\t\t<p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href=\"http://www.getskeleton.com\">Skeleton documentation</a>.</p>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("\t\r\n");
+      out.write("\t<!-- Footer -->\r\n");
+      out.write("\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/WEB-INF/jsp/includes/footer.jspf", out, false);
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
