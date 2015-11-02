@@ -1,7 +1,7 @@
 <div class="navbar">
     <div class="container">
         <div class="navbar-logo u-pull-left">
-            <a class="navbar-link" href="${request.contextPath}/">LoL eSports App</a>
+            <a class="navbar-link" href="${request.contextPath}/">Lolification</a>
         </div>
         
         <ul class="navbar-list u-pull-right">

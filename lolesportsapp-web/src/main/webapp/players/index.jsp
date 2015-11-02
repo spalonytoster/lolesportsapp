@@ -34,9 +34,9 @@
 							<th>Retired</th>
 						</tr>
 						
-						<c:forEach var="player" items="${modelBean.players}">
+						<c:forEach var="player" items="${modelBean.players}" varStatus="row">
 							<tr>
-								<td>${player.idPlayer}</td>
+								<td>${row.index+1}</td>
 								<td>${player.name}</td>
 								<td>${player.ign}</td>
 								<td>${player.surname}</td>

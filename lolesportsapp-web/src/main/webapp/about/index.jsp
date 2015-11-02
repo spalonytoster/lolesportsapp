@@ -11,11 +11,11 @@
 	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf" />
 	
 	<!-- Primary Page Layout -->
-	<div class="container">
+	<div class="container wrapper">
 		<div class="row">
-			<div class="one-half column" style="margin-top: 25%">
-				<h4>About</h4>
-				<p>Simple App to present JSP and Servlets.</p>
+			<div class="twelve columns jumbotron">
+				<h2>About</h2>
+				<h5><b>Lolification</b> is a simple App to present JSP and Servlets.</h5>
 			</div>
 		</div>
 	</div>

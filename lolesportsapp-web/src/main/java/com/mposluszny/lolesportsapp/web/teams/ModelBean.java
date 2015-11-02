@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mposluszny.lolesportsapp.core.dao.DAOManager;
+import com.mposluszny.lolesportsapp.core.dao.DAOManager.Table;
 import com.mposluszny.lolesportsapp.core.dao.TeamDao;
 import com.mposluszny.lolesportsapp.core.model.Team;
 
@@ -17,6 +18,7 @@ public class ModelBean implements Serializable {
 	private static final long serialVersionUID = 1551523865258549328L;
 
 	private ArrayList<Team> teams;
+	private Team team;
 
 	public List<Team> getTeams() {
 		
@@ -34,5 +36,18 @@ public class ModelBean implements Serializable {
 		daoManager.close();
 		
 		return teams;
+	}
+	
+	public Team getTeam(long idTeam) {
+		
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		TeamDao teamDao = daoManager.getTeamDao();
+		
+		this.team = teamDao.getTeamById(idTeam);
+		team.setPlayers(teamDao.getPlayersForTeam(team));
+		daoManager.close();
+		
+		return team;
 	}
 }
