@@ -1,13 +1,11 @@
 package com.mposluszny.lolesportsapp.web.teams;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.mposluszny.lolesportsapp.core.dao.DAOManager;
-import com.mposluszny.lolesportsapp.core.dao.DAOManager.Table;
-import com.mposluszny.lolesportsapp.core.dao.TeamDao;
 import com.mposluszny.lolesportsapp.core.model.Team;
+import com.mposluszny.lolesportsapp.web.services.TeamService;
+import com.mposluszny.lolesportsapp.web.services.impl.TeamServiceImpl;
 
 public class ModelBean implements Serializable {
 
@@ -17,36 +15,21 @@ public class ModelBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1551523865258549328L;
 
-	private ArrayList<Team> teams;
+	private List<Team> teams;
 	private Team team;
+	
+	public ModelBean() {
+		
+		TeamService teamService = new TeamServiceImpl();
+		this.teams = teamService.getTeams();
+	}
 
 	public List<Team> getTeams() {
-		
-		DAOManager daoManager = DAOManager.getInstance();
-		daoManager.open();
-		TeamDao teamDao = daoManager.getTeamDao();
-		
-		this.teams = (ArrayList<Team>) teamDao.getAllTeams();
-		
-		for (Team team : teams) {
-			
-			team.setPlayers(teamDao.getPlayersForTeam(team));
-		}
-		
-		daoManager.close();
 		
 		return teams;
 	}
 	
 	public Team getTeam(long idTeam) {
-		
-		DAOManager daoManager = DAOManager.getInstance();
-		daoManager.open();
-		TeamDao teamDao = daoManager.getTeamDao();
-		
-		this.team = teamDao.getTeamById(idTeam);
-		team.setPlayers(teamDao.getPlayersForTeam(team));
-		daoManager.close();
 		
 		return team;
 	}

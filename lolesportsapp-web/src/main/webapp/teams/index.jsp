@@ -40,6 +40,7 @@
 								<td>${team.dateOfEstablishment}</td>
 								<td>
 									<form class="actionForm" action="team" method="get">
+										<input type="hidden" name="id" value="${team.idTeam}"/>
 										<button class="actionButton" type="submit" name="view" value="${team.idTeam}">
 											<i class="fa fa-eye"></i>
 										</button>

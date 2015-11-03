@@ -22,35 +22,20 @@
 		</div>
 		<div class="row">
 			<div class="twelve columns">
+			
 				<table class="center table text-center">
 					<tbody>
 						<tr>
-							<th>Lp.</th>
 							<th>Nazwa</th>
 							<th>Region</th>
 							<th>Data utworzenia</th>
-							<th>Akcja</th>
 						</tr>
 						
-						<c:forEach var="team" items="${modelBean.teams}" varStatus="row">
+						<c:forEach var="team" items="${modelBean.team}" varStatus="row">
 							<tr>
-								<td>${row.index+1}</td>
 								<td>${team.name}</td>
 								<td>${team.region}</td>
 								<td>${team.dateOfEstablishment}</td>
-								<td>
-									<form class="actionForm" action="team" method="get">
-										<button class="actionButton" type="submit" name="view" value="${team.idTeam}">
-											<i class="fa fa-eye"></i>
-										</button>
-										<button class="actionButton" type="submit" name="edit" value="${team.idTeam}">
-											<i class="fa fa-edit"></i>
-										</button>
-										<button class="actionButton" type="submit" name="delete" value="${team.idTeam}">
-											<i class="fa fa-close"></i>
-										</button>
-									</form>
-								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

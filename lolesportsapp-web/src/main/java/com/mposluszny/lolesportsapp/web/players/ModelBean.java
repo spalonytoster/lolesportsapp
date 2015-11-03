@@ -1,13 +1,11 @@
 package com.mposluszny.lolesportsapp.web.players;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.mposluszny.lolesportsapp.core.dao.DAOManager;
-import com.mposluszny.lolesportsapp.core.dao.PlayerDao;
-import com.mposluszny.lolesportsapp.core.dao.TeamDao;
 import com.mposluszny.lolesportsapp.core.model.Player;
+import com.mposluszny.lolesportsapp.web.services.PlayerService;
+import com.mposluszny.lolesportsapp.web.services.impl.PlayerServiceImpl;
 
 public class ModelBean implements Serializable {
 
@@ -15,28 +13,24 @@ public class ModelBean implements Serializable {
 	 * Bean for 'players' section.
 	 * Contains a Player list
 	 */
+	
+	private List<Player> players;
+	
+	public ModelBean() {
+		
+		PlayerService playerService = new PlayerServiceImpl();
+		this.players = playerService.getPlayers();
+	}
+	
 	private static final long serialVersionUID = 1551523865258549328L;
-
-	private ArrayList<Player> players;
 
 	public List<Player> getPlayers() {
 		
-		DAOManager daoManager = DAOManager.getInstance();
-		daoManager.open();
-		PlayerDao playerDao = daoManager.getPlayerDao();
-		TeamDao teamDao = daoManager.getTeamDao();
+		return this.players;
+	}
+	
+	public void setPlayers(List<Player> players) {
 		
-		this.players = (ArrayList<Player>) playerDao.getAllPlayers();
-		
-		for (Player player : players) {
-			
-			if (player.getTeam().getIdTeam() != 0L) {
-				player.setTeam(teamDao.getTeamById(player.getTeam().getIdTeam()));
-			}
-		}
-		
-		daoManager.close();
-		
-		return players;
+		this.players = players;
 	}
 }
