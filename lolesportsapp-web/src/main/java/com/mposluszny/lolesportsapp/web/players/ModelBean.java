@@ -29,8 +29,4 @@ public class ModelBean implements Serializable {
 		return this.players;
 	}
 	
-	public void setPlayers(List<Player> players) {
-		
-		this.players = players;
-	}
 }

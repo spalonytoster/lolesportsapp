@@ -16,7 +16,6 @@ public class ModelBean implements Serializable {
 	private static final long serialVersionUID = 1551523865258549328L;
 
 	private List<Team> teams;
-	private Team team;
 	
 	public ModelBean() {
 		
@@ -27,10 +26,5 @@ public class ModelBean implements Serializable {
 	public List<Team> getTeams() {
 		
 		return teams;
-	}
-	
-	public Team getTeam(long idTeam) {
-		
-		return team;
 	}
 }
