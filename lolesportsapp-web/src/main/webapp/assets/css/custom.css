@@ -15,12 +15,20 @@ html, body {
 	vertical-align: middle;
 }
 
+.actionColumn form {
+	display: inline;
+}
+
 .actionForm {
 	margin: 0 auto;
 }
 
 .center {
 	margin: 0 auto;
+}
+
+.editRow * {
+	display: inline;
 }
 
 .wrapper {

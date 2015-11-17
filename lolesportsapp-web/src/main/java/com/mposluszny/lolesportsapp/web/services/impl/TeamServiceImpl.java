@@ -21,12 +21,6 @@ public class TeamServiceImpl implements TeamService {
 		TeamDao teamDao = daoManager.getTeamDao();
 		
 		List<Team> teams = (ArrayList<Team>) teamDao.getAllTeams();
-		
-		for (Team team : teams) {
-			
-			team.setPlayers(teamDao.getPlayersForTeam(team));
-		}
-		
 		daoManager.close();
 		
 		return teams;
@@ -68,6 +62,30 @@ public class TeamServiceImpl implements TeamService {
 		daoManager.open();
 		TeamDao teamDao = daoManager.getTeamDao();
 		teamDao.deleteTeam(team);
+		daoManager.close();
+	}
+
+	@Override
+	public void updateTeam(Team team) {
+
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		TeamDao teamDao = daoManager.getTeamDao();
+		
+		teamDao.updateTeam(team);
+		
+		daoManager.close();
+	}
+
+	@Override
+	public void addTeam(Team team) {
+
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		TeamDao teamDao = daoManager.getTeamDao();
+		
+		teamDao.addTeam(team);
+		
 		daoManager.close();
 	}
 }

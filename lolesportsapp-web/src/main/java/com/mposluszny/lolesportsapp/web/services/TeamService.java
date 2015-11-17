@@ -10,4 +10,6 @@ public interface TeamService {
 	public Team getTeam(long idTeam);
 	public void deletePlayerFromTeam(long idPlayer);
 	public void deleteTeam(Team team);
+	public void updateTeam(Team team);
+	public void addTeam(Team team);
 }

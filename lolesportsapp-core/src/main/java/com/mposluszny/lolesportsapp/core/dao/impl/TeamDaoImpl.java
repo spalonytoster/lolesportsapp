@@ -184,7 +184,7 @@ public class TeamDaoImpl extends GenericDAO<Team> implements TeamDao {
 			else if (team.getIdTeam() != 0L) {
 				
 				updatePlayerStmt = connection.prepareStatement("UPDATE Player SET idTeam=null WHERE idTeam=" + team.getIdTeam() + ";");
-				preparedStatement = connection.prepareStatement("DELETE FROM Team WHERE name=\'" + team.getIdTeam() + "\';");
+				preparedStatement = connection.prepareStatement("DELETE FROM Team WHERE idTeam=\'" + team.getIdTeam() + "\';");
 			}
 			
 			else {

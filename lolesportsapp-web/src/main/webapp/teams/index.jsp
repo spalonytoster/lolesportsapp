@@ -11,7 +11,7 @@
 
 	<!-- Navigation bar -->
 	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf" />
-	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.teams.ModelBean" scope="session" />
+	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.teams.ModelBean" scope="request" />
 	
 	<!-- Primary Page Layout -->
 	<div class="container wrapper title">
@@ -22,6 +22,33 @@
 		</div>
 		<div class="row">
 			<div class="twelve columns">
+				<form class="editRow" action="team" method="post">
+					<input type="hidden" value="true" name="add">
+					<div class="row">
+						<div class="one-third column">
+							<label for="nazwa">Nazwa</label>
+						</div>
+						<div class="one-third column">
+							<label for="region">Region</label>
+						</div>
+						<div class="one-third column">
+							<label for="dataUtworzenia">Data utworzenia</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="one-third column">
+							<input type="text" value="${team.name}" id="nazwa" name="name">
+						</div>
+						<div class="one-third column">
+							<input type="text" value="${team.region}" id="region" name="region">
+						</div>
+						<div class="one-third column">
+							<input type="text" value="${team.dateOfEstablishment}" id="dataUtworzenia" name="dateOfEstablishment">
+						</div>
+					</div>
+					<input class="button-primary" type="submit" value="Add">
+				</form>
+			
 				<table class="center table text-center">
 					<tbody>
 						<tr>
@@ -37,7 +64,7 @@
 								<td>${team.name}</td>
 								<td>${team.region}</td>
 								<td>${team.dateOfEstablishment}</td>
-								<td>
+								<td class="actionColumn">
 									<form class="actionForm" action="team" method="get">
 										<button class="actionButton" type="submit" name="view" value="${team.idTeam}">
 											<i class="fa fa-eye"></i>
@@ -45,6 +72,8 @@
 										<button class="actionButton" type="submit" name="edit" value="${team.idTeam}">
 											<i class="fa fa-edit"></i>
 										</button>
+									</form>
+									<form class="actionForm" action="team" method="post">
 										<button class="actionButton" type="submit" name="delete" value="${team.idTeam}">
 											<i class="fa fa-close"></i>
 										</button>
