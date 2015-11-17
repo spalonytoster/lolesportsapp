@@ -11,7 +11,7 @@
 
 	<!-- Navigation bar -->
 	<jsp:include page="${request.contextPath}/WEB-INF/jsp/includes/navbar.jspf" />
-	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.teams.ModelBean" scope="request" />
+	<jsp:useBean id="modelBean" class="com.mposluszny.lolesportsapp.web.teams.ModelBean" scope="session" />
 	
 	<!-- Primary Page Layout -->
 	<div class="container wrapper title">

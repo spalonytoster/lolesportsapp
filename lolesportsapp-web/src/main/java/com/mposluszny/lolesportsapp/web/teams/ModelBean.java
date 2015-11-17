@@ -16,15 +16,34 @@ public class ModelBean implements Serializable {
 	private static final long serialVersionUID = 1551523865258549328L;
 
 	private List<Team> teams;
+	private boolean isView;
+	private boolean isEdit;
 	
 	public ModelBean() {
 		
 		TeamService teamService = new TeamServiceImpl();
 		this.teams = teamService.getTeams();
+		isView = false; isEdit = false;
 	}
 
 	public List<Team> getTeams() {
 		
 		return teams;
+	}
+
+	public boolean isView() {
+		return isView;
+	}
+
+	public void setView(boolean isView) {
+		this.isView = isView;
+	}
+
+	public boolean isEdit() {
+		return isEdit;
+	}
+
+	public void setEdit(boolean isEdit) {
+		this.isEdit = isEdit;
 	}
 }

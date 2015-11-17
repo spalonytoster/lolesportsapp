@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mposluszny.lolesportsapp.core.dao.DAOManager;
+import com.mposluszny.lolesportsapp.core.dao.DaoManagerTest;
+import com.mposluszny.lolesportsapp.core.dao.PlayerDao;
 import com.mposluszny.lolesportsapp.core.dao.TeamDao;
+import com.mposluszny.lolesportsapp.core.model.Player;
 import com.mposluszny.lolesportsapp.core.model.Team;
 import com.mposluszny.lolesportsapp.web.services.TeamService;
 
@@ -41,5 +44,30 @@ public class TeamServiceImpl implements TeamService {
 		daoManager.close();
 		
 		return team;
+	}
+
+	@Override
+	public void deletePlayerFromTeam(long idPlayer) {
+
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		TeamDao teamDao = daoManager.getTeamDao();
+		PlayerDao playerDao = daoManager.getPlayerDao();
+		
+		Player player = playerDao.getPlayerById(idPlayer);
+		player.setTeam(new Team());
+		playerDao.updatePlayer(player);
+		
+		daoManager.close();
+	}
+
+	@Override
+	public void deleteTeam(Team team) {
+
+		DAOManager daoManager = DAOManager.getInstance();
+		daoManager.open();
+		TeamDao teamDao = daoManager.getTeamDao();
+		teamDao.deleteTeam(team);
+		daoManager.close();
 	}
 }
