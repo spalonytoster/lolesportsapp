@@ -45,11 +45,11 @@ public class TeamServiceImpl implements TeamService {
 
 		DAOManager daoManager = DAOManager.getInstance();
 		daoManager.open();
-		TeamDao teamDao = daoManager.getTeamDao();
 		PlayerDao playerDao = daoManager.getPlayerDao();
 		
 		Player player = playerDao.getPlayerById(idPlayer);
 		player.setTeam(new Team());
+		player.getTeam().setIdTeam(0L);
 		playerDao.updatePlayer(player);
 		
 		daoManager.close();

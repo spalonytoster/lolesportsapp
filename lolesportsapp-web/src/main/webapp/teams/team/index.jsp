@@ -29,7 +29,6 @@
 								<th>Region</th>
 								<th>Data utworzenia</th>
 							</tr>
-							
 							<tr>
 								<td>${team.name}</td>
 								<td>${team.region}</td>
@@ -126,7 +125,8 @@
 									</td>
 									<td>
 										<form class="actionForm" method="post">
-											<button class="actionButton" type="submit" name="delete" value="${player.idPlayer}" title="Remove this player from current team">
+											<input type="hidden" value="${team.idTeam}" name="returnTeamId">
+											<button class="actionButton" type="submit" name="deleteFromTeam" value="${player.idPlayer}" title="Remove this player from current team">
 												<i class="fa fa-close"></i>
 											</button>
 										</form>

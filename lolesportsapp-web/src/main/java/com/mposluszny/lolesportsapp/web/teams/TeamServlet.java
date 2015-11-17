@@ -77,6 +77,11 @@ public class TeamServlet extends HttpServlet {
 			teamService.addTeam(team);
 		}
 		
+		else if (request.getParameter("deleteFromTeam") != null) {
+			long idTeam = Long.parseLong(request.getParameter("deleteFromTeam"));
+			teamService.deletePlayerFromTeam(idTeam);
+		}
+		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	

@@ -154,7 +154,7 @@ public class PlayerDaoImpl extends GenericDAO<Player> implements PlayerDao {
 															  ", surname=\'" + player.getSurname() + "\'" +
 															  ", ign=\'" + player.getIgn() + "\'" +
 															  ", role=\'" + player.getRole() + "\'" +
-															  ", idTeam=" + player.getTeam().getIdTeam() +
+															  ", idTeam=" + (player.getTeam().getIdTeam() == 0L ? "null" : String.valueOf(player.getTeam().getIdTeam())) +
 															  ", isRetired=" + player.isRetired() +
 															  " WHERE idPlayer=" + player.getIdPlayer() + ";");
 			preparedStatement.execute();
