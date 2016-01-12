@@ -1,4 +1,4 @@
-package com.mposluszny.lolesportsapp.web.services.impl;
+package com.mposluszny.lolesportsapp.web.services.impl.mongo;
 
 import java.util.List;
 

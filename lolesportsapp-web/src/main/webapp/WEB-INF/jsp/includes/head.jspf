@@ -18,5 +18,8 @@
 	<link rel="stylesheet" href="${request.contextPath}/assets/css/custom.css">
 	<link rel="stylesheet" href="${request.contextPath}/assets/css/font-awesome.css">
 	
+	<!--  Scripts -->
+	<script src="${request.contextPath}/assets/js/scripts.js"></script>
+	
 	<!-- Favicon€ -->
 	<link rel="icon" type="image/png" href="${request.contextPath}/assets/images/favicon.png">

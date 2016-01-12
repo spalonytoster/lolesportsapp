@@ -93,7 +93,7 @@
 							</div>
 						</div>
 
-						<input class="button-primary" type="submit" value="Submit">
+						<input class="button-primary" type="submit" onclick="return confirm('Na pewno chcesz wykonać zmianę?')" value="Submit">
 					</form>
 					
 					<table class="center table text-center" style="margin-top: 20px;">
@@ -126,7 +126,7 @@
 									<td>
 										<form class="actionForm" method="post">
 											<input type="hidden" value="${team.idTeam}" name="returnTeamId">
-											<button class="actionButton" type="submit" name="deleteFromTeam" value="${player.idPlayer}" title="Remove this player from current team">
+											<button class="actionButton" type="submit" onclick="return confirm('Na pewno chcesz wykonać zmianę?')" name="deleteFromTeam" value="${player.idPlayer}" title="Remove this player from current team">
 												<i class="fa fa-close"></i>
 											</button>
 										</form>

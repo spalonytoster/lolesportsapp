@@ -38,13 +38,6 @@ public class TeamServlet extends HttpServlet {
 			readonly = false;
 		}
 		
-		else if (request.getParameter("delete") != null) {
-			idTeam = Long.parseLong(request.getParameter("delete"));
-			team = teamService.getTeam(idTeam);
-			teamService.deleteTeam(team);
-			request.getRequestDispatcher("team/index.jsp").forward(request, response);
-		}
-		
 		team = teamService.getTeam(idTeam);
 		request.setAttribute("team", team);
 		request.setAttribute("readonly", readonly);

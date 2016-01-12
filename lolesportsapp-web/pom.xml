@@ -70,14 +70,14 @@
 	  <!-- Embedded Jetty (jetty:run) -->
 	  <plugin>
 		<groupId>org.mortbay.jetty</groupId>
-		<artifactId>jetty-maven-plugin</artifactId>
-		<version>8.1.14.v20131031</version>
-		<configuration>
-			<scanIntervalSeconds>3</scanIntervalSeconds>
-			<webAppConfig>
-				<contextPath>/${project.build.finalName}</contextPath>
-			</webAppConfig>
-		</configuration>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>8.0.3.v20111011</version>
+			<configuration>
+				<scanIntervalSeconds>3</scanIntervalSeconds>
+				<webAppConfig>
+					<contextPath>/</contextPath>
+				</webAppConfig>
+			</configuration>
 	  </plugin>
     </plugins>
   </build>
@@ -95,5 +95,20 @@
     	<id>repo_maven_org</id>
     	<url>https://repo.maven.apache.org/maven2</url>
     </repository>
+    <repository>
+		<id>repository.jboss.org</id>
+		<name>JBoss Repository</name>
+		<url>http://repository.jboss.org/maven2</url>
+	</repository>
+	<repository>
+		<id>java.net2</id>
+		<name>Repository hosting the jee6 artifacts</name>
+		<url>http://download.java.net/maven/2</url>
+	</repository>
+	<repository>
+		<id>java.net.glassfish</id>
+		<name>Repository hosting the jee6 artifacts from glassfish reference implementation</name>
+		<url>http://download.java.net/maven/glassfish/</url>
+	</repository>
    </repositories>
 </project>

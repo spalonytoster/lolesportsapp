@@ -10,6 +10,7 @@
   <modules>
     <module>lolesportsapp-core</module>
     <module>lolesportsapp-web</module>
+	<module>loldb-mongo</module>
   </modules>
 
 </project>

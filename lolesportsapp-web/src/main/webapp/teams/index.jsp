@@ -46,7 +46,7 @@
 							<input type="text" value="${team.dateOfEstablishment}" id="dataUtworzenia" name="dateOfEstablishment">
 						</div>
 					</div>
-					<input class="button-primary" type="submit" value="Add">
+					<input class="button-primary" onclick="return confirm('Na pewno chcesz wykonać zmianę?')" type="submit" value="Add">
 				</form>
 			
 				<table class="center table text-center">
@@ -74,7 +74,7 @@
 										</button>
 									</form>
 									<form class="actionForm" action="team" method="post">
-										<button class="actionButton" type="submit" name="delete" value="${team.idTeam}">
+										<button class="actionButton" type="submit" onclick="return confirm('Na pewno chcesz wykonać zmianę?')" name="delete" value="${team.idTeam}">
 											<i class="fa fa-close"></i>
 										</button>
 									</form>
