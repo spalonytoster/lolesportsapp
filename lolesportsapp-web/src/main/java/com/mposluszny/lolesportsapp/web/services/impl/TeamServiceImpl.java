@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mposluszny.lolesportsapp.core.dao.DAOManager;
-import com.mposluszny.lolesportsapp.core.dao.DaoManagerTest;
 import com.mposluszny.lolesportsapp.core.dao.PlayerDao;
 import com.mposluszny.lolesportsapp.core.dao.TeamDao;
 import com.mposluszny.lolesportsapp.core.model.Player;
